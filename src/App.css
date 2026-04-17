@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Tổng quan */
+.container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #f9fafb;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1f2937;
 }
 
-.App-link {
-  color: #61dafb;
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-@keyframes App-logo-spin {
+.main-title {
+  text-align: center;
+  /* Kích thước chữ tự co giãn */
+  font-size: clamp(2rem, 8vw, 3.5rem); 
+  font-weight: 900;
+  margin-bottom: 5px;
+  
+  /* Tạo hiệu ứng màu Gradient cho chữ */
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Khoảng cách chữ và bóng nhẹ */
+  letter-spacing: -0.05em;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+  
+  /* Thêm hiệu ứng gõ chữ hoặc hiện hình (tùy chọn) */
+  animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sub-title {
+  text-align: center;
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  letter-spacing: 0.02em;
+}
+
+/* Card chung */
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #f3f4f6;
+}
+
+/* Layout Form */
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.upload-box {
+  border: 2px dashed #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background: #fcfcfc;
+}
+
+.preview-img {
+  max-width: 100%;
+  border-radius: 8px;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input[type="text"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.btn-analyze {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-analyze:active {
+  transform: scale(0.98);
+}
+
+/* Chỉ số da */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.metric-item {
+  background: white;
+  padding: 15px 5px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.metric-label { font-size: 11px; font-weight: bold; color: #6b7280; margin-bottom: 5px; }
+.metric-value { font-size: 20px; font-weight: 900; }
+
+/* Chẩn đoán */
+.diagnosis-box {
+  background: #eff6ff;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  margin: 15px 0;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+}
+
+/* Sản phẩm gợi ý */
+.recommend-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.recommend-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+/* RESPONSIVE - ĐIỆN THOẠI */
+@media (max-width: 768px) {
+  .input-grid, .check-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .recommend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wrapper {
+    padding: 0 10px;
   }
 }
