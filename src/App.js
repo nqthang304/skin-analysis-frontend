@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css'; 
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://skin-analysis-backend-mxo9.onrender.com';
+
 function App() {
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -30,11 +32,27 @@ function App() {
     formData.append("product_name", productName);
 
     try {
-      const response = await fetch("https://skin-analysis-backend-mxo9.onrender.com/api/analyze-skin", {
+      const response = await fetch(`${API_BASE_URL}/api/analyze-skin`, {
         method: "POST",
         body: formData,
       });
-      if (!response.ok) throw new Error("Lỗi kết nối đến máy chủ AI");
+      if (!response.ok) {
+        let message = "Lỗi kết nối đến máy chủ AI";
+        try {
+          const errorText = await response.text();
+          if (errorText) {
+            try {
+              const errorData = JSON.parse(errorText);
+              message = errorData.message || message;
+            } catch (jsonError) {
+              message = errorText;
+            }
+          }
+        } catch (readError) {
+          message = "Lỗi kết nối đến máy chủ AI";
+        }
+        throw new Error(message);
+      }
       const data = await response.json();
       setResult(data);
     } catch (err) {
