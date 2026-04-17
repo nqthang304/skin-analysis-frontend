@@ -30,7 +30,7 @@ function App() {
     formData.append("product_name", productName);
 
     try {
-      const response = await fetch("https://skin-analysis-backend-mxo9.onrender.com", {
+      const response = await fetch("https://skin-analysis-backend-mxo9.onrender.com/api/analyze-skin", {
         method: "POST",
         body: formData,
       });
