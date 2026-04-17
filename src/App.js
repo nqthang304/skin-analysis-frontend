@@ -109,33 +109,33 @@ function App() {
           <div className="fade-in">
             {/* Thẻ chỉ số */}
             <div className="metrics-grid">
-              <div className="metric-item"><div className="metric-label">MỤN</div><div className="metric-value" style={{color: '#dc2626'}}>{result.roboflow_metrics.acne_count}</div></div>
-              <div className="metric-item"><div className="metric-label">LỖ CHÂN LÔNG</div><div className="metric-value" style={{color: '#ea580c'}}>{result.roboflow_metrics.pore_count}</div></div>
-              <div className="metric-item"><div className="metric-label">LOẠI DA</div><div className="metric-value" style={{color: '#2563eb'}}>{result.roboflow_metrics.skin_type_index}</div></div>
-              <div className="metric-item"><div className="metric-label">SẮC TỐ</div><div className="metric-value" style={{color: '#7c3aed'}}>{result.roboflow_metrics.pigment_index}</div></div>
+              <div className="metric-item"><div className="metric-label">MỤN</div><div className="metric-value" style={{color: '#dc2626'}}>{result.roboflow_metrics?.acne_count ?? 0}</div></div>
+              <div className="metric-item"><div className="metric-label">LỖ CHÂN LÔNG</div><div className="metric-value" style={{color: '#ea580c'}}>{result.roboflow_metrics?.pore_count ?? 0}</div></div>
+              <div className="metric-item"><div className="metric-label">LOẠI DA</div><div className="metric-value" style={{color: '#2563eb'}}>{result.roboflow_metrics?.skin_type_index ?? 'N/A'}</div></div>
+              <div className="metric-item"><div className="metric-label">SẮC TỐ</div><div className="metric-value" style={{color: '#7c3aed'}}>{result.roboflow_metrics?.pigment_index ?? 'N/A'}</div></div>
             </div>
 
             {/* Chẩn đoán */}
             <div className="card">
               <h2 style={{fontSize: '1.2rem', marginBottom: '15px'}}>🩺 Chẩn đoán AI</h2>
-              <div className="diagnosis-box">"{result.expert_advice.skin_analysis.status}"</div>
+              <div className="diagnosis-box">"{result.expert_advice?.skin_analysis?.status || 'Chua co ket qua chan doan'}"</div>
               
               <div className="check-grid">
                 <div>
-                  <p style={{fontWeight: 'bold'}}>Độ hợp sản phẩm: {result.expert_advice.product_check.name}</p>
+                  <p style={{fontWeight: 'bold'}}>Độ hợp sản phẩm: {result.expert_advice?.product_check?.name || productName || 'Khong ro ten san pham'}</p>
                   <div style={{display: 'flex', alignItems: 'center', margin: '10px 0'}}>
-                    <span style={{fontSize: '2rem', fontWeight: '900', color: '#2563eb', marginRight: '10px'}}>{result.expert_advice.product_check.compatibility_score}%</span>
+                    <span style={{fontSize: '2rem', fontWeight: '900', color: '#2563eb', marginRight: '10px'}}>{result.expert_advice?.product_check?.compatibility_score ?? 0}%</span>
                   </div>
-                  <p style={{fontSize: '14px', color: '#4b5563'}}>{result.expert_advice.product_check.detailed_analysis}</p>
+                  <p style={{fontSize: '14px', color: '#4b5563'}}>{result.expert_advice?.product_check?.detailed_analysis || 'Chua co phan tich chi tiet.'}</p>
                 </div>
                 <div>
                   <p style={{fontSize: '12px', fontWeight: 'bold', color: '#ef4444'}}>RỦI RO ⚠️</p>
                   <div style={{display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '10px'}}>
-                    {result.expert_advice.product_check.ingredients_of_concern.map((ing, i) => <span key={i} style={{fontSize: '10px', background: '#fee2e2', padding: '2px 6px', borderRadius: '4px'}}>{ing}</span>)}
+                    {(result.expert_advice?.product_check?.ingredients_of_concern ?? []).map((ing, i) => <span key={i} style={{fontSize: '10px', background: '#fee2e2', padding: '2px 6px', borderRadius: '4px'}}>{ing}</span>)}
                   </div>
                   <p style={{fontSize: '12px', fontWeight: 'bold', color: '#10b981'}}>CÓ LỢI ✨</p>
                   <div style={{display: 'flex', flexWrap: 'wrap', gap: '5px'}}>
-                    {result.expert_advice.product_check.beneficial_ingredients.map((ing, i) => <span key={i} style={{fontSize: '10px', background: '#d1fae5', padding: '2px 6px', borderRadius: '4px'}}>{ing}</span>)}
+                    {(result.expert_advice?.product_check?.beneficial_ingredients ?? []).map((ing, i) => <span key={i} style={{fontSize: '10px', background: '#d1fae5', padding: '2px 6px', borderRadius: '4px'}}>{ing}</span>)}
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@ function App() {
             {/* Sản phẩm gợi ý */}
             <h2 style={{margin: '20px 0'}}>🎁 Sản phẩm gợi ý</h2>
             <div className="recommend-grid">
-              {result.expert_advice.recommendations.map((item, idx) => (
+              {(result.expert_advice?.recommendations ?? []).map((item, idx) => (
                 <div key={idx} className="recommend-card">
                   <div style={{fontSize: '10px', color: '#3b82f6', fontWeight: 'bold'}}>{item.brand}</div>
                   <h3 style={{fontSize: '15px', margin: '5px 0'}}>{item.name}</h3>
