@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'; 
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://skin-analysis-backend-mxo9.onrender.com';
+const API_BASE_URL = 'https://skin-analysis-backend-mxo9.onrender.com';
 
 function App() {
   const [image, setImage] = useState(null);
