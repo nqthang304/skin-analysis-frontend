@@ -180,3 +180,95 @@ input[type="text"] {
     padding: 0 10px;
   }
 }
+
+
+.overall-score-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.overall-score-card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.score-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: white;
+  color: #1e3a8a;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.primary-issue {
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+/* Các nhãn phụ bên dưới điểm thành phần */
+.metric-sub {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Các Tag Vấn đề / Lợi ích / Rủi ro */
+.tag-concern {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #fecaca;
+}
+
+.tag-risk {
+  font-size: 11px;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+  font-weight: 600;
+}
+
+.tag-benefit {
+  font-size: 11px;
+  background: #d1fae5;
+  color: #047857;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #a7f3d0;
+  font-weight: 600;
+}
+
+/* Box chứa lời khuyên Routine */
+.advice-box {
+  background: #f0fdf4;
+  border: 1px solid #a7f3d0;
+  padding: 16px;
+  border-radius: 10px;
+  color: #065f46;
+  font-size: 14px;
+  line-height: 1.6;
+}
